@@ -5,12 +5,16 @@
 
 ATTACH DATABASE '/path/old/db' AS oldest;
 
+update user_device set device_jid_row_id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="user_device")) where _id > 0;
+update user_device set device_jid_row_id = -_id  where _id < 0;
 update group_participant_user set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="group_participant_user")) where _id > 0;
 update group_participant_user set _id = -_id  where _id < 0;
 update group_participant_device set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="group_participant_device")) where _id > 0;
 update group_participant_device set _id = -_id  where _id < 0;
 update call_log_participant_v2 set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="call_log_participant_v2")) where _id > 0;
 update call_log_participant_v2 set _id = -_id  where _id < 0;
+update call_log set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="call_log")) where _id > 0;
+update call_log set _id = -_id  where _id < 0;
 update receipts set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipts")) where _id > 0;
 update receipts set _id = -_id  where _id < 0;
 update receipt_orphaned set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipt_orphaned")) where _id > 0;
@@ -21,9 +25,9 @@ update receipt_device set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence 
 update receipt_device set _id = -_id  where _id < 0;
 update receipt_user set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipt_user")) where _id > 0;
 update receipt_user set _id = -_id  where _id < 0;
-update user_device set device_jid_row_id = -(device_jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipt_device")) where device_jid_row_id > 0;
+update user_device set device_jid_row_id = -(device_jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="user_device")) where device_jid_row_id > 0;
 update user_device set device_jid_row_id = -device_jid_row_id  where device_jid_row_id < 0;
-update group_participant_device set device_jid_row_id = -(device_jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipt_device")) where device_jid_row_id > 0;
+update group_participant_device set device_jid_row_id = -(device_jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="user_device")) where device_jid_row_id > 0;
 update group_participant_device set device_jid_row_id = -device_jid_row_id  where device_jid_row_id < 0;
 ---------------------------------------------------------------------------------------------
 update call_log set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="call_log")) where _id > 0;
