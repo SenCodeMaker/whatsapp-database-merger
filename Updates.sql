@@ -11,8 +11,6 @@ update group_participant_device set _id = -(_id + (SELECT seq FROM oldest.sqlite
 update group_participant_device set _id = -_id  where _id < 0;
 update call_log_participant_v2 set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="call_log_participant_v2")) where _id > 0;
 update call_log_participant_v2 set _id = -_id  where _id < 0;
-update call_log set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="call_log")) where _id > 0;
-update call_log set _id = -_id  where _id < 0;
 update receipts set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipts")) where _id > 0;
 update receipts set _id = -_id  where _id < 0;
 update receipt_orphaned set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="receipt_orphaned")) where _id > 0;
