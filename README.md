@@ -25,6 +25,6 @@ Your destination base is ready for restoration.
 
 ### Comparison
 
-In comparison to [natario's merger](https://github.com/natario1/whatsapp-database-merger/) this way should not abandon data or encounter problem for large message content.
+In comparison to [natario's merger](https://github.com/natario1/whatsapp-database-merger/) this way should not abandon data or encounter problem for large message content. It also runs in seconds compared to hours with natario's on my dbs.
 
 
