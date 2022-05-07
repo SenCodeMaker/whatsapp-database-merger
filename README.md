@@ -1,6 +1,6 @@
 # whatsapp-database-merger
 
-SQL scripts to merge two or more whatsapp (decrypted) database with ease and performance.
+SQL scripts to merge two (or more) whatsapp (decrypted) database with ease and performance. It basically take the data in the newest and put it on top of the pile in the older.
 
 The resulting database will also be in decrypted. To use it, it must either be moved to `/data/data/com.XXwhatsapp/databases` on a rooted phone,
   or otherwise encrypted again and restored as usual in /com.XXwhatsapp/databases.
@@ -23,8 +23,10 @@ Right click on the destination database, which I name the "oldest" in the script
 
 Your destination base is ready for restoration.
 
-### Comparison
+### Comparison and limitations
 
 In comparison to [natario's merger](https://github.com/natario1/whatsapp-database-merger/) this way should not abandon data or encounter problem for large message content. It also runs in seconds compared to hours with natario's on my dbs.
+
+The dbs are supposed to not be overlapping. Message duplication would appear if it's not the case.To avoid it removing duplicates is necessary in the new db.
 
 
