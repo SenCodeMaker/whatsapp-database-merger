@@ -23,10 +23,11 @@ Right click on the destination database, which I name the "oldest" in the script
 
 Your destination base is ready for restoration.
 
-### Comparison and limitations
+### Comparison, limitations & to-do list
 
 In comparison to [natario's merger](https://github.com/natario1/whatsapp-database-merger/) this way should not abandon data or encounter problem for large message content. It also runs in seconds compared to hours with natario's on my dbs.
 
 The dbs are supposed to not be overlapping. Message duplication would appear if it's not the case.To avoid it removing duplicates is necessary in the new db.
 
-
+Tables user_device and jid are not well handled, it creates duplicate for couples of user/device. I didn't see it bring an issue in app use. Improving 
+it would need to think about ow to map user/device from the new base to the old. Existing couples should be dropped, couple with corresponding to new device for the existing user should increments key_index column. 
