@@ -51,6 +51,8 @@ update jid set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name=
 update jid set _id = -_id  where _id < 0;
 update call_log set jid_row_id = -(jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="jid")) where jid_row_id > 0;
 update call_log set jid_row_id = -jid_row_id  where jid_row_id < 0;
+update call_log set call_creator_device_jid_row_id  = -(call_creator_device_jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="jid")) where jid_row_id > 0;
+update call_log set call_creator_device_jid_row_id = -call_creator_device_jid_row_id  where jid_row_id < 0;
 update missed_call_logs set group_jid_row_id = -(group_jid_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="jid")) where group_jid_row_id > 0;
 update missed_call_logs set group_jid_row_id = -group_jid_row_id  where group_jid_row_id < 0;
 update call_log_participant_v2 set call_log_row_id = -(call_log_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="call_log_participant_v2")) where call_log_row_id > 0;
