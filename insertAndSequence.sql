@@ -179,15 +179,16 @@ UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM group_participants) WHERE
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM group_participants_history) WHERE name="group_participants_history";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM jid) WHERE name="jid";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM media_refs) WHERE name="media_refs";
+-- Next 2 lines are legacy tables which are duplicated and left here
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages) WHERE name="messages";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_vcards_jids) WHERE name="messages_vcards_jids";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_media_interactive_annotation) WHERE name="message_media_interactive_annotation";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_media_interactive_annotation_vertex) WHERE name="message_media_interactive_annotation_vertex";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message) WHERE name="message";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_link) WHERE name="message_link";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_quote) WHERE name="message_quote";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_vcard) WHERE name="message_vcard";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_vcard_jid) WHERE name="message_vcard_jid";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages) WHERE name="messages";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_links) WHERE name="messages_links";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_quotes) WHERE name="messages_quotes";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_vcards) WHERE name="messages_vcards";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_vcards_jids) WHERE name="messages_vcards_jids";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM missed_call_log_participant) WHERE name="missed_call_log_participant";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM missed_call_logs) WHERE name="missed_call_logs";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM props) WHERE name="props";
