@@ -127,6 +127,8 @@ update messages_quotes set quoted_row_id = -(quoted_row_id + (SELECT seq FROM ol
 update messages_quotes set quoted_row_id = -quoted_row_id  where quoted_row_id < 0;
 update messages set quoted_row_id = -(quoted_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="messages_quotes")) where quoted_row_id > 0;
 update messages set quoted_row_id = -quoted_row_id  where quoted_row_id < 0;
+update message_quoted set message_row_id = -(message_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="message")) where message_row_id > 0;
+update message_quoted set message_row_id = -message_row_id  where message_row_id < 0;
 update messages_links set _id = -(_id +  (SELECT seq FROM oldest.sqlite_sequence WHERE name="messages_links")) where _id > 0;
 update messages_links set _id = -_id  where _id < 0;
 update messages_vcards set _id = -(_id +  (SELECT seq FROM oldest.sqlite_sequence WHERE name="messages_vcards")) where _id > 0;
