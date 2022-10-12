@@ -80,6 +80,8 @@ update receipt_orphaned set receipt_recipient_jid_row_id = -receipt_recipient_ji
 ---------------------------------------------------------------------------------------
 update message set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="message")) where _id > 0;
 update message set _id = -_id  where _id < 0;
+update message set sort_id = -(sort_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="message")) where _id > 0;
+update message set sort_id = -sort_id  where _id < 0;
 update audio_data set message_row_id = -(message_row_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="message")) where message_row_id > 0;
 update audio_data set message_row_id = -message_row_id  where message_row_id < 0;
 update message_ftsv2_content  set docid = -(docid + (SELECT seq FROM oldest.sqlite_sequence WHERE name="message")) where docid > 0;
