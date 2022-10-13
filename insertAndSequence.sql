@@ -3,7 +3,7 @@
 --
 --
 
-ATTACH DATABASE '/home/benjamin/Bureau/samsung.db' AS newest;
+ATTACH DATABASE 'msgstore_newer.db' AS newest;
 
 
 insert or ignore into agent_devices  select * from newest.agent_devices;
