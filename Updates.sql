@@ -3,7 +3,7 @@
 -- exec it connect to the newest
 --
 
-ATTACH DATABASE '/path/old/db' AS oldest;
+ATTACH DATABASE '/path/old/msgstore_older.db' AS oldest;
 
 update user_device set _id = -(_id + (SELECT seq FROM oldest.sqlite_sequence WHERE name="user_device")) where _id > 0;
 update user_device set _id = -_id  where _id < 0;
