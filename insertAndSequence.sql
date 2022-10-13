@@ -132,17 +132,7 @@ insert or ignore into message_ui_elements_reply  select * from newest.message_ui
 insert or ignore into message_vcard  select * from newest.message_vcard;
 insert or ignore into message_vcard_jid  select * from newest.message_vcard_jid;
 insert or ignore into message_view_once_media  select * from newest.message_view_once_media;
-insert or ignore into messages  select * from newest.messages;
-insert or ignore into messages_fts  select * from newest.messages_fts;
-insert or ignore into messages_fts_content  select * from newest.messages_fts_content;
-insert or ignore into messages_fts_segdir  select * from newest.messages_fts_segdir;
-insert or ignore into messages_fts_segments  select * from newest.messages_fts_segments;
 insert or ignore into messages_hydrated_four_row_template  select * from newest.messages_hydrated_four_row_template;
-insert or ignore into messages_links  select * from newest.messages_links;
-insert or ignore into messages_quotes  select * from newest.messages_quotes;
-insert or ignore into messages_quotes_payment_invite_legacy  select * from newest.messages_quotes_payment_invite_legacy;
-insert or ignore into messages_vcards  select * from newest.messages_vcards;
-insert or ignore into messages_vcards_jids  select * from newest.messages_vcards_jids;
 insert or ignore into missed_call_log_participant  select * from newest.missed_call_log_participant;
 insert or ignore into missed_call_logs  select * from newest.missed_call_logs;
 insert or ignore into mms_thumbnail_metadata  select * from newest.mms_thumbnail_metadata;
@@ -157,8 +147,6 @@ insert or ignore into quick_replies  select * from newest.quick_replies;
 insert or ignore into quick_reply_attachments  select * from newest.quick_reply_attachments;
 insert or ignore into quick_reply_keywords  select * from newest.quick_reply_keywords;
 insert or ignore into quick_reply_usage  select * from newest.quick_reply_usage;
-insert or ignore into quoted_message_order  select * from newest.quoted_message_order;
-insert or ignore into quoted_message_product  select * from newest.quoted_message_product;
 insert or ignore into receipt_device  select * from newest.receipt_device;
 insert or ignore into receipt_orphaned  select * from newest.receipt_orphaned;
 insert or ignore into receipt_user  select * from newest.receipt_user;
@@ -179,9 +167,6 @@ UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM group_participants) WHERE
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM group_participants_history) WHERE name="group_participants_history";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM jid) WHERE name="jid";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM media_refs) WHERE name="media_refs";
--- Next 2 lines are legacy tables which are duplicated and left here
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages) WHERE name="messages";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_vcards_jids) WHERE name="messages_vcards_jids";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_media_interactive_annotation) WHERE name="message_media_interactive_annotation";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_media_interactive_annotation_vertex) WHERE name="message_media_interactive_annotation_vertex";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message) WHERE name="message";
@@ -199,4 +184,20 @@ UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM receipts) WHERE name="rec
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM status) WHERE name="status";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM status_list) WHERE name="status_list";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM user_device) WHERE name="user_device";
+-- Moved legacy tables to bottom to group errors together
+insert or ignore into messages  select * from newest.messages;
+insert or ignore into messages_fts  select * from newest.messages_fts;
+insert or ignore into messages_fts_content  select * from newest.messages_fts_content;
+insert or ignore into messages_fts_segdir  select * from newest.messages_fts_segdir;
+insert or ignore into messages_fts_segments  select * from newest.messages_fts_segments;
+insert or ignore into messages_links  select * from newest.messages_links;
+insert or ignore into messages_quotes  select * from newest.messages_quotes;
+insert or ignore into messages_quotes_payment_invite_legacy  select * from newest.messages_quotes_payment_invite_legacy;
+insert or ignore into messages_vcards  select * from newest.messages_vcards;
+insert or ignore into messages_vcards_jids  select * from newest.messages_vcards_jids;
+insert or ignore into quoted_message_order  select * from newest.quoted_message_order;
+insert or ignore into quoted_message_product  select * from newest.quoted_message_product;
+-- Next 2 lines are legacy tables which are duplicated and left here
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages) WHERE name="messages";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM messages_vcards_jids) WHERE name="messages_vcards_jids";
 
