@@ -186,7 +186,7 @@ UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_media_interactive
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_media_interactive_annotation_vertex) WHERE name="message_media_interactive_annotation_vertex";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message) WHERE name="message";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_link) WHERE name="message_link";
-UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_quote) WHERE name="message_quote";
+UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_quoted) WHERE name="message_quoted";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_vcard) WHERE name="message_vcard";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM message_vcard_jid) WHERE name="message_vcard_jid";
 UPDATE sqlite_sequence SET seq = (SELECT MAX(_id) FROM missed_call_log_participant) WHERE name="missed_call_log_participant";
