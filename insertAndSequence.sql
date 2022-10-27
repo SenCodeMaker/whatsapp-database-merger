@@ -52,6 +52,9 @@ insert or ignore into labels  select * from newest.labels;
 insert or ignore into media_hash_thumbnail  select * from newest.media_hash_thumbnail;
 insert or ignore into media_refs  select * from newest.media_refs;
 insert or ignore into message  select * from newest.message;
+--Example code to specify order of columns
+--insert or ignore into message  select _id,chat_row_id,from_me,key_id,sender_jid_row_id,status,broadcast,recipient_count,participant_hash,origination_flags,origin,timestamp,received_timestamp,receipt_server_timestamp,message_type,text_data,starred,lookup_tables,sort_id,message_add_on_flags 
+from newest.message;
 insert or ignore into message_add_on  select * from newest.message_add_on;
 insert or ignore into message_add_on_orphan  select * from newest.message_add_on_orphan;
 insert or ignore into message_add_on_reaction  select * from newest.message_add_on_reaction;
