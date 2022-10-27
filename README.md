@@ -14,10 +14,11 @@ The easy way is to open your databases in [dbeaver](https://dbeaver.io/download/
 Database > new connexion > sqlite > open : select the db file
 
 open new file (ctrl + O) > open each script > for each script connect it to the right base > ![click N/A up in the bar](https://user-images.githubusercontent.com/43207983/167259262-9b1cc634-8c6c-4fa1-a263-654e38c99c01.png)
+(Further details in each script commented at the top of the script)
 
 Update the path to the db files in the scripts.
  
-Execute each script (Alt + X or clic ![button](https://user-images.githubusercontent.com/43207983/167259327-9cf1e47d-486f-4908-a8d2-1b6e5b17b342.png))
+Execute each script 1 at a time (Alt + X or click 3rd icon from the top![3rd button](https://user-images.githubusercontent.com/43207983/167259327-9cf1e47d-486f-4908-a8d2-1b6e5b17b342.png))
 
 Right click on the destination database, which I name the "oldest" in the script, and disconnect it. Close dbeaver, normaly next to your dbs the file named db_wal.db should be emptied.
 
